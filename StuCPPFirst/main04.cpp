@@ -4,7 +4,8 @@
 /**
  * C++引用
  * 1.引用很像一个常量，必须初始化
- * 2.引用像指针一样，占4个字节；
+ * 2.引用像指针一样，所有类型的引用都只占4个字节；
+ * 3.引用在C++中的实现是一个常指针 int* const d;
  */
 int main041(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
@@ -24,8 +25,10 @@ int main041(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** e
 	return 0;
 }
 
-
-void swap01(int *x, int *y)
+/**
+ * 指针交换
+ */
+void swap0(int *x, int *y)
 {
 	int tmp = 0;
 	tmp = *x;
@@ -33,13 +36,19 @@ void swap01(int *x, int *y)
 	*y = tmp;
 }
 
-void swap02(int &x, int &y)
+/**
+ * 引用交换
+ */
+void swap02(int &x, int &y)//C++编译器->void swap2(int *const x, int *const y)
 {
 	int tmp = 0;
-	tmp = x;
-	x = y;
-	y = tmp;
+	tmp = x; //C++编译器->tmp = *x;
+	x = y;	//C++编译器->*x = *y;
+	y = tmp; //C++编译器->*y tmp
 }
+
+
+
 
 struct T1
 {
@@ -47,16 +56,18 @@ struct T1
 	int age;
 
 	int &a;
-	int &b;
+	//int &b;
+	double &b;
 };
 int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	int x = 10;
 	int y = 20;
-	swap01(&x, &y);//使用指针交换
+
+	swap0(&x, &y);//使用指针交换
 	printf("x=%d y=%d\n", x, y);
 
-	swap01(&x, &y);//使用引用交换
+	swap02(x, y);//使用引用交换 C++编译器-> swap02(&x,&y);
 	printf("x=%d y=%d\n", x, y);
 
 	printf("sizeof(T1)=%d\n", sizeof(T1));
