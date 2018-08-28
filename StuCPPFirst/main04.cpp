@@ -59,7 +59,7 @@ struct T1
 	//int &b;
 	double &b;
 };
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main045(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	int x = 10;
 	int y = 20;
