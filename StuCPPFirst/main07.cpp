@@ -85,7 +85,7 @@ Test f2()
  * struct的属性默认是public的
  * class的属性默认是private的
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main071(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 //	f();
 //	Test t;
