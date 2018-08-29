@@ -134,6 +134,7 @@ int main064(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** e
 
 /**
  * 函数指针
+ * 严格匹配候选者的函数类型与函数指针的函数类型
  */
 
 //声明一个函数类型
@@ -147,7 +148,7 @@ typedef void(*PFUN)(double a,double b);
 void(*MYFUN)(int a, int b);
 
 
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main065(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 
 
