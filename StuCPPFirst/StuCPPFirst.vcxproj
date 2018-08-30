@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="main01.c" />
     <ClCompile Include="main010.cpp" />
+    <ClCompile Include="main011.cpp" />
     <ClCompile Include="main02.cpp" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.cpp" />

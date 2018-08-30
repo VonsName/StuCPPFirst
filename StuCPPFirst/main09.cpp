@@ -87,15 +87,16 @@ public:
 	Array(int len);
 	~Array();
 	Array(const Array & ra);
-	int mgetLength() const
+	int mgetLength() const //对象包含与成员函数不兼容的类型限定符
+											//const对象只能调用const函数
 	{
 		return length;
 	}
-	void setData(int index, int value)  const
+	void setData(int index, int value)  //const
 						//写在函数后面的const修饰的是隐藏的this指针指向的内存空间
 	{							//this指针指向的内存都不能修改(this指向的成员变量)
 		data[index] = value;
-		//++length;
+		++length;
 		//this->initLen = 100;
 		//this->data = NULL;
 	}
@@ -118,10 +119,12 @@ Array::Array()
 }
 Array::Array(const Array & ra)
 {
-	this->data = new int[ra.mgetLength()];
-	for (int i=0;i<this->mgetLength();i++)
+	this->initLen = ra.initLen;
+	this->data = new int[ra.mgetLength()];//对象包含与成员函数不兼容的类型限定符,
+															//const对象只能调用const函数
+	for (int i=0;i<ra.mgetLength();i++)
 	{
-		data[i] = ra.data[i];
+		this->setData(i, ra.getData(i));
 	}
 }
 Array::Array(int len)
@@ -137,7 +140,7 @@ Array::~Array()
 	}
 	cout << "析构函数" << endl;
 }
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main092(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Array arr;
 	for (int i = 0; i < 10; i++)
@@ -149,12 +152,13 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 		printf("%d ", arr.getData(i));
 	}
 	printf("\n");
-	printf("%d\n", arr.mgetLength());
+	//printf("%d\n", arr.mgetLength());
 
 	Array a2 = arr;
 	for (int i = 0; i < 10; i++)
 	{
 		printf("%d ", a2.getData(i));
 	}
+	printf("\n");
 	return 0;
 }
