@@ -119,7 +119,10 @@ Array::Array()
 Array::Array(const Array & ra)
 {
 	this->data = new int[ra.mgetLength()];
-	this->data = ra.data;
+	for (int i=0;i<this->mgetLength();i++)
+	{
+		data[i] = ra.data[i];
+	}
 }
 Array::Array(int len)
 {
