@@ -84,7 +84,7 @@ DD::~DD()
 }
 
 //virtual 占用内存
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main0151(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	//继承的二义性，在类A中有属性a,类B和类C都继承了类A
 //	CC c1;
