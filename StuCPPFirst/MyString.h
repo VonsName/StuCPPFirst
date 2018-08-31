@@ -9,6 +9,7 @@ public:
 	MyString(const MyString &str);
 	~MyString();
 	MyString& operator=(MyString& str);
+	MyString& operator=(const char *str);
 	MyString& operator()(MyString& str);
 	bool operator==(MyString& str);
 	bool operator!=(MyString& str);

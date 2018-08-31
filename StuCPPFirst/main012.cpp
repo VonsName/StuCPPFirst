@@ -44,5 +44,8 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 
 	MyString str7("qewqe1312312");
 	cout << str7;
+
+	MyString str8 = "aaaaaa";
+	str8.print_ms();
 	return 0;
 }

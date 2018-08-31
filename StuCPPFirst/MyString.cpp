@@ -41,7 +41,24 @@ MyString::~MyString()
 	}
 }
 
-//ÖØÔØ=ºÅ²Ù×÷·û
+//ÖØÔØ=ºÅ²Ù×÷·û(¸³Öµ)
+MyString& MyString::operator=(const char *str)
+{
+	if (str == NULL)
+	{
+		return *this;
+	}
+	this->data = new char[strlen(str) + 1];
+	unsigned int i = 0;
+	for (i = 0; i < strlen(str); i++);
+	{
+		data[i] = str[i];
+	}
+	data[i] = '\0';
+	return *this;
+}
+
+//ÖØÔØ=ºÅ²Ù×÷·û(³õÊ¼»¯)
 MyString& MyString::operator=(MyString& str)
 {
 	if (this->data!=NULL)
