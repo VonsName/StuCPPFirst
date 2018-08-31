@@ -54,6 +54,12 @@
     <ClCompile Include="MyString.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main013.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main015.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyString.h">

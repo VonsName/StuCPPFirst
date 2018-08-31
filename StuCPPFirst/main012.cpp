@@ -4,7 +4,7 @@
 using namespace std;
 
 
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main0121(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 
 	MyString str("qeqeqweqw");
@@ -45,7 +45,19 @@ int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp
 	MyString str7("qewqe1312312");
 	cout << str7;
 
-	MyString str8 = "aaaaaa";
+	MyString str8 = "zaaaaaa";
 	str8.print_ms();
+
+	if (str8 > str3)
+	{
+		printf("大于\n");
+	}
+	else {
+		printf("小于\n");
+	}
+
+	MyString str9;
+	cin >> str9;
+	str9.print_ms();
 	return 0;
 }

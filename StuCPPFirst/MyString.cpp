@@ -8,6 +8,8 @@ using namespace std;
 
 MyString::MyString()
 {
+	this->data = new char[1];
+	strcpy(this->data, "");
 }
 
 
@@ -119,6 +121,22 @@ char& MyString::operator[](int index)
 	return this->data[index];
 }
 
+//ÖØÔØ >²Ù×÷·û
+bool MyString::operator>(const MyString &str)
+{
+	if (strcmp(this->data,str.data)>0)
+	{
+		return true;
+	}
+	return false;
+}
+
+//ÖØÔØ<²Ù×÷·û
+bool MyString::operator<(const MyString &str)
+{
+	return !(*this > str);
+}
+
 void MyString::print_ms()
 {
 	//printf("%s\n", this->data);
@@ -130,6 +148,7 @@ int MyString::myLen()
 	return strlen(this->data);
 }
 
+//ÖØÔØ<<²Ù×÷·û
 ostream& operator<<(ostream& out, const MyString &str)
 {
 	if (str.data == NULL)
@@ -142,4 +161,18 @@ ostream& operator<<(ostream& out, const MyString &str)
 	}
 	out << endl;
 	return out;
+}
+
+//ÖØÔØ>>²Ù×÷·û
+istream& operator>>(istream& in,  MyString &str)
+{
+	str.data = new char[5 + 1];
+	/*int i = 0;
+	for ( i = 0; i < 5; i++)
+	{
+		in >> str.data[i];
+	}
+	str.data[i] = '\0';*/
+	in >> str.data;
+	return in;
 }
