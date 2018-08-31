@@ -90,7 +90,7 @@ public:
 	int mgetLength() const //对象包含与成员函数不兼容的类型限定符
 											//const对象只能调用const函数
 	{
-		return length;
+		return initLen;
 	}
 	void setData(int index, int value)  //const
 						//写在函数后面的const修饰的是隐藏的this指针指向的内存空间
@@ -101,6 +101,19 @@ public:
 		//this->data = NULL;
 	}
 
+	//重载[]操作符
+	//void operator [](int index);
+
+	int& operator[](int index);
+
+	//重载=号操作符
+	Array& operator=(Array &a);
+
+	//重载==操作符
+	bool operator==(const Array &a);
+
+	//操作!=操作符
+	bool operator!=(const Array &a);
 
 	 int getData(int index) const
 	{
@@ -117,14 +130,69 @@ Array::Array()
 {
 	data = new int[initLen];
 }
+
+//重载[]操作符
+int& Array::operator[](int index)
+{
+	return *(data + index);
+}
+
+//重载=号操作符
+Array& Array::operator=(Array &a)
+{
+	this->initLen = 0;
+	if (this->data != NULL)
+	{
+		delete[] this->data;
+	}
+	
+	this->initLen = a.initLen;
+	this->data = new int[this->initLen];
+	for (int i = 0; i < this->initLen; i++)
+	{
+		this->data[i] = a.data[i];
+	}
+	return *this;
+}
+
+
+//重载==操作符
+bool Array::operator==(const Array &a)
+{
+	bool flag;
+	if (this->initLen != a.initLen)
+	{
+		flag = false;
+		return flag;
+	}
+	for (int i=0;i<this->initLen;i++)
+	{
+		if (this->data[i] == a.data[i])
+		{
+			flag = true;
+		}
+		else {
+			flag = false;
+		}
+	}
+	return flag;
+}
+
+//重载!=操作符
+bool Array::operator!=(const Array &a)
+{
+	return !(*this == a);
+}
+
 Array::Array(const Array & ra)
 {
 	this->initLen = ra.initLen;
-	this->data = new int[ra.mgetLength()];//对象包含与成员函数不兼容的类型限定符,
-															//const对象只能调用const函数
-	for (int i=0;i<ra.mgetLength();i++)
+	//this->data = new int[ra.mgetLength()];//对象包含与成员函数不兼容的类型限定符,
+	this->data = new int[this->initLen];			//const对象只能调用const函数
+	for (int i = 0; i < this->initLen; i++)
 	{
-		this->setData(i, ra.getData(i));
+		//this->setData(i, ra.getData(i));
+		this->data[i] = ra.data[i];
 	}
 }
 Array::Array(int len)
@@ -140,25 +208,75 @@ Array::~Array()
 	}
 	cout << "析构函数" << endl;
 }
+
+
+//函数返回值当左值，需要返回一个引用
 int main092(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Array arr;
 	for (int i = 0; i < 10; i++)
 	{
-		arr.setData(i, i + 1);
+		//arr.setData(i, i + 1);
+		arr[i] = i + 1;
 	}
 	for (int i = 0; i < 10; i++)
 	{
-		printf("%d ", arr.getData(i));
+		//printf("%d ", arr.getData(i));
+		printf("%d ", arr[i]);
 	}
 	printf("\n");
 	//printf("%d\n", arr.mgetLength());
 
-	Array a2 = arr;
+	Array a2 = arr;//调用拷贝构造函数
 	for (int i = 0; i < 10; i++)
 	{
-		printf("%d ", a2.getData(i));
+		//printf("%d ", a2.getData(i));
+		printf("%d ", a2[i]);
 	}
 	printf("\n");
+
+	Array a3;
+	//重载=号操作符
+	a3 = a2;
+	for (int i = 0; i < 10; i++)
+	{
+		printf("%d ", a3[i]);
+	}
+	printf("\n");
+
+	if (a3 == a2)
+	{
+		printf("相等\n");
+	}
+	else
+	{
+		printf("不相等\n");
+	}
+
+	Array a4;
+	for (int i = 0; i < 10; i++)
+	{
+		a4[i] = i + 3;
+	}
+
+	if (a4 == a2)
+	{
+		printf("相等\n");
+	}
+	else
+	{
+		printf("不相等\n");
+	}
+
+
+	if (a4 != a2)
+	{
+		printf("不相等\n");
+	}
+	else
+	{
+		printf("相等\n");
+	}
+
 	return 0;
 }

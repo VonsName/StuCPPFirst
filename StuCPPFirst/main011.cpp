@@ -157,7 +157,7 @@ User::~User()
  * 18课时完
  */
 //=号操作符的优先级是从右至左
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main0113(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	User u1(23, "lisi");
 	u1.print_u();
