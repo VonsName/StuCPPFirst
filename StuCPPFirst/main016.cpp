@@ -185,7 +185,7 @@ void howtoDelte(Parent1 *p1)
  *		使用virtual关键字之后,能产生多态(如果不使用virtual关键字,叫重定义,会屏蔽掉父类的函数);
  *		多态是在运行时期根据具体的对象类型产生函数的调用
  */
-int main(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
+int main0162(_In_ int argc, _In_reads_(argc) _Pre_z_ char** argv, _In_z_ char** envp)
 {
 	Child2 *c2 = new Child2;
 	c2->test();

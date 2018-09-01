@@ -153,7 +153,11 @@
     <ClCompile Include="main013.cpp" />
     <ClCompile Include="main015.cpp" />
     <ClCompile Include="main016.cpp" />
+    <ClCompile Include="main017.cpp" />
+    <ClCompile Include="main018.cpp" />
+    <ClCompile Include="main019.c" />
     <ClCompile Include="main02.cpp" />
+    <ClCompile Include="main020.c" />
     <ClCompile Include="main03.cpp" />
     <ClCompile Include="main04.cpp" />
     <ClCompile Include="main05.cpp" />

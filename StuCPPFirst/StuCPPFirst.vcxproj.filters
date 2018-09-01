@@ -63,6 +63,18 @@
     <ClCompile Include="main016.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="main017.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main018.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main019.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="main020.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyString.h">
